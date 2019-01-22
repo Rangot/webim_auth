@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Авторизация Вк
+{% endblock %}
+
+{% block content %}
+
+    {% if not user.is_authenticated %}
+        <button type="button" class="btn btn-outline-primary"
+            onclick="location.href ='{% url "social:begin" "vk-oauth2" %}'">Авторизоваться</button>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <button type="button" class="btn btn-outline-primary"
+            onclick="location.href ='{% url "logout" %}'">Выйти</button>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        Добро пожаловать, {{ user.first_name }} {{ user.last_name }}!
+        <br>
+        <br>
+        {% for url, username in id_username.items %}
+            <div class="list-group">
+                <a href="{{ url }}" class="list-group-item list-group-item-action">{{ username }}</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
