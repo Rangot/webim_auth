@@ -22,4 +22,11 @@
         {% endfor %}
     {% endif %}
 
+    <br>
+
+    {% if user.is_authenticated %}
+        <button type="button" class="btn btn-outline-primary"
+            onclick="location.href ='{% url "logout" %}'">Выйти</button>
+    {% endif %}
+
 {% endblock %}
