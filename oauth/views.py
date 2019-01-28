@@ -16,7 +16,8 @@ def index(request):
         }
         response = requests.get('https://api.vk.com/method/friends.get',
                                 params=friends_request_params)
-        friends = response.json()['response']['items']
+        friends = response.json()
+        print(friends)
         id_username = {}
         for friend in friends:
             username = str(friend['first_name'] + ' ' + friend['last_name'])
