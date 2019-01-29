@@ -8,8 +8,11 @@ def index(request):
     try:
         social = user.social_auth.get(provider='vk-oauth2')
         friends_request_params = {
+            'client_id': '6829253',
+            'grant_type': 'client_credentials',
+            'client_secret': 'eGJBUDb5aCaHky1hZiZC',
             'access_token': social.extra_data['access_token'],
-            'v': 5.0,
+            'v': 5.92,
             'count': 5,
             'order': 'name',
             'fields': 'first_name'
